@@ -1,7 +1,11 @@
 # Astra Agent NextJS
 
-A simple Astra AI Agent build with NextJS, Astra and OpenAI.
+This demo is a simple Astra AI Agent built with NextJS, Astra and OpenAI.
 
-It is build over the standard Cassio Python data model, but here I created a really realy simple CassioJS.
+It is built over the standard Cassio Python data model, but I created a simple CassioJS here.
 
 ![Screenshot](docs/nextjs-astra.png)
+
+The form on the main page invokes the API, built at app/api/chat.
+
+The API generates the embedding, searches for similar contents from the database, and creates the prompt, then returns the answer to the application.

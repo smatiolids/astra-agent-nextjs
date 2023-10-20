@@ -1,0 +1,23 @@
+{
+  "vectorTables": [
+    {
+      "name": "vs_investment_kb",
+      "tableName": "vs_investment_kb",
+      "similarityMetric": "dot_product",
+      "vectorColumn": "vector",
+      "vectorDimensions": 1536,
+      "hasMetadata": true,
+      "embeddingGeneration": {
+        "provider": "openai",
+        "model": "text-embedding-ada-002"
+      }
+    }
+  ],
+  "memoryTables": [
+    {
+      "name": "vs_investment_memory",
+      "tableName": "vs_investment_memory",
+      "ttl": 3600
+    }
+  ]
+}

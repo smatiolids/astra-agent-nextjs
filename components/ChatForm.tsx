@@ -13,6 +13,7 @@ const ChatForm = () => {
   const [processing, setProcessing] = useState(false);
 
   const [messages, setMessages] = useState([]);
+  const [sessionId, setSessionId] = useState();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,7 +33,7 @@ const ChatForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, sessionId }),
       });
 
       const data = await response.json();
@@ -40,6 +41,7 @@ const ChatForm = () => {
       if (data) {
         console.log(data);
         setMessages((messages) => [...messages, data]);
+        setSessionId(data.sessionId);
         console.log("API call successful");
       } else {
         console.error("API call failed");
@@ -79,9 +81,7 @@ const ChatForm = () => {
           <div className="m-10">
             <div>Q: {e.question}</div>
             <div className="rounded-md bg-slate-600 p-6">
-              {e.completion.choices
-                .map((m) => m.message.content)
-                .join(". ")}
+              {e.completion.choices.map((m) => m.message.content).join(". ")}
             </div>
           </div>
         ))}
